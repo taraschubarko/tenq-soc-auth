@@ -8,21 +8,53 @@
 
 ```bash
 npm install --save tenq-soc-auth
+or
+yarn add tenq-soc-auth
 ```
 
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+import React from 'react'
 
-import MyComponent from 'tenq-soc-auth'
+import TenqSocAuth  from 'tenq-soc-auth'
 import 'tenq-soc-auth/dist/index.css'
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
+const autEventListener = (data) => {
+  console.log(data)
+  console.log(JSON.stringify(data.data))
 }
+
+const App = () => {
+  const host = 'https://localhost';
+  return <div className={'pa-md'}>
+    <br/>
+    <TenqSocAuth
+      provider={'google'}
+      host={host}
+      label={'google'}
+      onAuth={autEventListener}
+    />
+    <br/><br/>
+    <TenqSocAuth
+      provider={'vkontakte'}
+      host={host}
+      label={'vk'}
+      onAuth={autEventListener}
+    />
+    <br/><br/>
+    <TenqSocAuth
+      provider={'facebook'}
+      host={host}
+      label={'facebook'}
+      onAuth={autEventListener}
+    />
+
+  </div>
+}
+
+export default App
+
 ```
 
 ## License
